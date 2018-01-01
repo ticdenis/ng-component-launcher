@@ -1,7 +1,7 @@
 {
   "name": "ng-component-launcher",
   "description": "This library provides a simple and lightweight service to dynamically create components for Angular.",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "keywords": [
     "angular",

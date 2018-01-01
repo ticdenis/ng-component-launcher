@@ -19,9 +19,9 @@ import { ComponentLauncherModule } from 'ng-component-launcher';
 import { AppComponent } from './app';
 
 @NgModule({
-  imports:[ BrowserModule, ComponentLauncherModule ],
+  imports:[ BrowserModule, ComponentLauncherModule /* required */ ],
   declarations: [ AppComponent ],
-  entryComponents: [ AlertComponent /* custom */ ],
+  entryComponents: [ AlertComponent /* your component */ ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
