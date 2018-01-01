@@ -35,7 +35,7 @@ import { ComponentLauncher } from 'ng-component-launcher';
 
 @Component({ 
   selector: 'app',
-  template: `<button (click)="showAlert()`>Show Alert</button>`
+  template: `<button (click)="showAlert()">Show Alert</button>`
  })
 export class AppComponent {
 
