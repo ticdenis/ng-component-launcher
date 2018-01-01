@@ -1,18 +1,16 @@
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ComponentLauncherModule } from './component-launcher.module';
 
-
-import { AppComponent } from './app.component';
-
+@Component({
+  selector: 'app-root',
+  template: '',
+})
+export class AppComponent { }
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
+  declarations: [AppComponent],
+  imports: [BrowserModule, ComponentLauncherModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

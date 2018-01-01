@@ -1,27 +1,52 @@
-# NgComponentLauncher
+# Angular Component Launcher
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
+This library provides a simple and lightweight service to dynamically create components.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+npm i --save ng-component-launcher
+```
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+First, import the **ComponentLauncherModule** to your module:
 
-## Build
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ComponentLauncherModule } from 'ng-component-launcher';
+import { AppComponent } from './app';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+@NgModule({
+  imports:[ BrowserModule, ComponentLauncherModule ],
+  declarations: [ AppComponent ],
+  entryComponents: [ AlertComponent /* custom */ ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
 
-## Running unit tests
+In this example, the **create** method will dynamically create the received component, previously this component must be declared to be compiled in the *entryComponents AppModule property*.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { Component } from '@angular/core';
+import { ComponentLauncher } from 'ng-component-launcher';
 
-## Running end-to-end tests
+@Component({ 
+  selector: 'app',
+  template: `<button (click)="showAlert()`>Show Alert</button>`
+ })
+export class AppComponent {
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  constructor(private launcher: ComponentLauncher) { }
 
-## Further help
+  showAlert(): void {
+    const ref = this.launcher.create(AlertComponent);
+    const component = ref.instance;
+    // ...
+    this.launcher.destroy(ref);
+  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+}
+```
